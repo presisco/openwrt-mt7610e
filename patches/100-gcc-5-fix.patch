@@ -1,0 +1,24 @@
+diff -Naur orig/src/ap/ap_cfg.c fixed/src/ap/ap_cfg.c
+--- orig/src/ap/ap_cfg.c	2014-10-15 17:50:44.000000000 +0800
++++ fixed/src/ap/ap_cfg.c	2016-05-07 21:56:43.218073795 +0800
+@@ -5834,7 +5834,7 @@
+ 	IN	PRTMP_ADAPTER	pAd, 
+ 	IN	PSTRING			arg)
+ {
+-    printk("Driver version: %s (%s %s) .\n", AP_DRIVER_VERSION, __DATE__, __TIME__);
++    printk("Driver version: %s (%s %s) .\n", AP_DRIVER_VERSION, "20150605", "00:00:00");
+     
+     return TRUE;
+ }
+diff -Naur orig/src/common/cmm_info.c fixed/src/common/cmm_info.c
+--- orig/src/common/cmm_info.c	2014-10-15 17:50:51.000000000 +0800
++++ fixed/src/common/cmm_info.c	2016-05-07 21:53:53.130073795 +0800
+@@ -41,7 +41,7 @@
+ {
+ #ifdef CONFIG_AP_SUPPORT
+ 	IF_DEV_CONFIG_OPMODE_ON_AP(pAd)
+-		DBGPRINT(RT_DEBUG_OFF, ("Driver version-%s %s %s\n", AP_DRIVER_VERSION, __DATE__, __TIME__));
++		DBGPRINT(RT_DEBUG_OFF, ("Driver version-%s %s %s\n", AP_DRIVER_VERSION, "20150605", "00:00:00"));
+ #endif /* CONFIG_AP_SUPPORT */
+ 
+ 
