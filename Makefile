@@ -9,13 +9,13 @@ include $(INCLUDE_DIR)/kernel.mk
 PKG_NAME:=mt7610e
 PKG_REV:=5
 PKG_TYPE:=p4rev
-PKG_FIX:=110971
+PKG_FIX:=118062
 PKG_VERSION:=$(PKG_TYPE)-$(PKG_FIX)
-PKG_RELEASE:=20150605
+PKG_RELEASE:=20161129
 
 PKG_SOURCE_VERSION:=$(PKG_REV)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_URL:=https://github.com/i80s/mtk-sources/releases/download/v1.0-vanilla
+PKG_SOURCE_URL:=https://github.com/presisco/mt7610e-p4rev-118062/releases/download/1.0
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 
 PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
@@ -58,7 +58,12 @@ define P4/Release
   tar cjf mt7610e.tar.bz2 build src
 endef
 
-
+define Build/Prepare
+	$(PKG_UNPACK)
+	mv $(KERNEL_BUILD_DIR)/src $(PKG_BUILD_DIR)/
+	mv $(KERNEL_BUILD_DIR)/build $(PKG_BUILD_DIR)/
+	$(Build/Patch)
+endef
 
 define Build/Compile
 	$(MAKE) -C "$(LINUX_DIR)" \
